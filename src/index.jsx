@@ -1,15 +1,9 @@
-import {
-	Button,
-	FlatList,
-	Modal,
-	Text,
-	TextInput,
-	TouchableOpacity,
-	View,
-} from 'react-native';
+import { AddItem, TaskList, TaskModal } from './components';
 import React, {useState} from 'react';
 
 import {StatusBar} from 'expo-status-bar';
+import {View} from 'react-native';
+import {colors} from './constants/theme/colors'
 import {styles} from './styles'
 
 const App = () => {
@@ -34,14 +28,7 @@ const App = () => {
 		setIsModalVisible(!isModalVisible);
 		setSelectedTask(item);
 	};
-	const renderItem = ({item}) => (
-		<TouchableOpacity
-			style={styles.itemContainer}
-			onPress={() => onHandlerModal(item)}>
-			<Text style={styles.itemList}>{item.value}</Text>
-		</TouchableOpacity>
-	);
-	const keyExtractor = item => item.id;
+
 	const onHandlerCancel = () => {
 		setIsModalVisible(!isModalVisible);
 		setSelectedTask(null);
@@ -56,39 +43,26 @@ const App = () => {
 	return (
 		<View style={styles.container}>
 			<StatusBar style="auto" />
-			<View style={styles.inputContainer}>
-				<TextInput
-					style={styles.input}
-					placeholder="Ingresa tu tarea"
-					value={task}
-					onChangeText={onUserChange}
-				/>
-				<Button
-					disabled={!task}
-					title="  +  "
-					color="#5FFBF1"
-					onPress={onUserSubmit}
-				/>
-			</View>
-			<FlatList
-				data={tasks}
-				renderItem={renderItem}
-				keyExtractor={keyExtractor}
-				style={styles.listContainer}
+			<AddItem>
+				placeholder = {"Ingresa tu tarea"}
+				task = {task}
+				onUserChange = {onUserChange}
+				onUserSubmit = {onUserSubmit}
+				buttonText = {"  +  "}
+				buttonColor = {colors.highlightsColor}
+			</AddItem>
+			<TaskList
+				tasks = {tasks}
+				onHandlerModal = {onHandlerModal}
 			/>
-			<Modal visible={isModalVisible} animationType="slide ">
-				<View style={styles.modalContainer}>
-					<Text style={styles.modalTitle}>Detalles</Text>
-					<View style={styles.modalContentContainer}>
-						<Text style={styles.modalContent}>Contenido</Text>
-						<Text style={styles.contentDetails}>{SelectedTask?.value}</Text>
-					</View>
-					<View style={styles.modalButtonCaontainer}>
-						<Button title="Cancel" color="#5FFBF1" onPress={onHandlerCancel} />
-						<Button title="Delete" color="red" onPress={onHandlerDelete} />
-					</View>
-				</View>
-			</Modal>
+			<TaskModal
+				isModalVisible = {isModalVisible}
+				modalContent = {'Contenido'}
+				color1 = {colors.highlightsColor}
+				color2 = {colors.warningColor}
+				onHandlerCancel = {onHandlerCancel}
+				onHandlerDelete = {onHandlerDelete}
+			/>
 		</View>
 	);
 }
