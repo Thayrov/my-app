@@ -1,4 +1,8 @@
-export const colors = {
+export let colors = {
+	warningColor: 'red',
 	highlightsColor: '#5FFBF1',
-	warningColor: 'red,',
+	bgColor: '#424C5E',
+	bordersColor: '#ccc',
+	inputBgColor: '#f9f9f9',
+	itemBgColor: '#CDFDFA',
 };

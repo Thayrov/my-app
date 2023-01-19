@@ -1,17 +1,18 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../../constants/theme/colors';
 
 export const styles = StyleSheet.create({
 	itemList: {
 		fontSize: 16,
 		fontWeight: 'bold',
-		color: '#424C5E',
+		color: colors.bgColor,
 	},
 	itemContainer: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		padding: 10,
-		backgroundColor: '#CDFDFA',
+		backgroundColor: colors.itemBgColor,
 		marginBottom: 10,
 		borderRadius: 5,
 	},

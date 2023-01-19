@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
 		color: 'gray',
 	},
 	contentDetails: {
-		fontSize: 14,
+		fontSize: 16,
 		color: 'black',
 		textAlign: 'center',
 		fontWeight: 'bold',
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
 		marginBottom: 20,
 	},
 	modalButtonContainer: {
-		width: '60%',
+		width: '70%',
 		flexDirection: 'row',
 		justifyContent: 'space-evenly',
 	},

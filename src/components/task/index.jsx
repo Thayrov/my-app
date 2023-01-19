@@ -1,13 +1,13 @@
 import {FlatList} from 'react-native';
 import React from "react";
 import TaskItem from './item/index'
-import styles from './styles';
+import {styles} from './styles';
 
 const TaskList = ({tasks, onHandlerModal}) => {
     const renderItem = ({item}) => (
         <TaskItem
             item = {item}
-            onHandlerModal = {onHandlerModal()}
+            onHandlerModal = {onHandlerModal}
         />
     );
     const keyExtractor = item => item.id;

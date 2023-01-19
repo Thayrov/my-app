@@ -3,7 +3,7 @@ import { Button, Modal, Text, View } from 'react-native';
 import React from "react";
 import {styles} from './styles';
 
-const TaskModal = (isModalVisible, modalContent,color1, color2, onHandlerCancel,onHandlerDelete ) => {
+const TaskModal = ({isModalVisible, SelectedTask, modalContent,color1, color2,color3, onHandlerCancel,onHandlerDelete, onHandlerCheck} ) => {
     return (
         <Modal visible={isModalVisible} animationType="slide ">
             <View style={styles.modalContainer}>
@@ -14,6 +14,7 @@ const TaskModal = (isModalVisible, modalContent,color1, color2, onHandlerCancel,
                 </View>
                 <View style={styles.modalButtonContainer}>
                     <Button title="Cancel" color={color1} onPress={onHandlerCancel} />
+                    <Button title="Check" color={color3} onPress={onHandlerCheck} />
                     <Button title="Delete" color={color2} onPress={onHandlerDelete} />
                 </View>
             </View>
