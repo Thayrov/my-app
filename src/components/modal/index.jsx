@@ -5,7 +5,7 @@ import {styles} from './styles';
 
 const TaskModal = ({isModalVisible, SelectedTask, modalContent,color1, color2,color3, onHandlerCancel,onHandlerDelete, onHandlerCheck} ) => {
     return (
-        <Modal visible={isModalVisible} animationType="slide ">
+        <Modal visible={isModalVisible} animationType="slide">
             <View style={styles.modalContainer}>
                 <Text style={styles.modalTitle}>Detalles</Text>
                 <View style={styles.modalContentContainer}>

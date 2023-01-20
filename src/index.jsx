@@ -1,8 +1,8 @@
 import { AddItem, TaskList, TaskModal, TextHolder, Title } from './components';
+import {Keyboard, View} from 'react-native';
 import React, {useState} from 'react';
 
 import {StatusBar} from 'expo-status-bar';
-import {View} from 'react-native';
 import {colors} from './constants/theme/colors'
 import {styles} from './styles'
 
@@ -11,10 +11,12 @@ const App = () => {
 	const [tasks, setTasks] = useState([]);
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const [SelectedTask, setSelectedTask] = useState(null);
+	const [isTaskChecked,setIsTaskChecked] = useState(false)
 	const onUserChange = text => {
 		setTask(text);
 	};
 	const onUserSubmit = () => {
+		Keyboard.dismiss();
 		setTasks([
 			...tasks,
 			{
@@ -38,10 +40,11 @@ const App = () => {
 		);
 		setIsModalVisible(!isModalVisible);
 	};
-	const onHandlerCheck = () => {
-		''
-	}
 
+	const onHandlerCheck = () => {
+		setIsTaskChecked(true);
+		setIsModalVisible(!isModalVisible)
+	};
 	return (
 		<View style={styles.container}>
 			<StatusBar style="auto" />
@@ -60,6 +63,8 @@ const App = () => {
 			<TaskList
 				tasks = {tasks}
 				onHandlerModal = {onHandlerModal}
+				isTaskChecked = {isTaskChecked}
+
 			/>
 			<TaskModal
 				isModalVisible = {isModalVisible}
@@ -73,7 +78,7 @@ const App = () => {
 				onHandlerCheck = {onHandlerCheck}
 			/>
 			<TextHolder 
-				text = 'Gracias por revisar este proyecto académico, es sin fines de lucro y fue realizado por Thayrov García'
+				text = 'Gracias por revisar este proyecto académico sin fines de lucro y fue realizado por Thayrov García'
 			/>
 		</View>
 	);

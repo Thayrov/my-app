@@ -3,9 +3,10 @@ import React from "react";
 import TaskItem from './item/index'
 import {styles} from './styles';
 
-const TaskList = ({tasks, onHandlerModal}) => {
+const TaskList = ({tasks, onHandlerModal,isTaskChecked}) => {
     const renderItem = ({item}) => (
         <TaskItem
+            isTaskChecked = {isTaskChecked}
             item = {item}
             onHandlerModal = {onHandlerModal}
         />
